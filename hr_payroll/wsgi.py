@@ -1,5 +1,5 @@
 """
-WSGI config for human_resources project.
+WSGI config for hr_payroll project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'human_resources.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hr_payroll.settings')
 
 application = get_wsgi_application()
