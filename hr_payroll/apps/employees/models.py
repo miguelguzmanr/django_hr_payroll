@@ -15,6 +15,30 @@ class Sex(models.Model):
         return self.name
 
 
+class Position(models.Model):
+    name = models.CharField(verbose_name='nombre',
+                            max_length=30, null=False, blank=False)
+
+    class Meta:
+        verbose_name = 'posición'
+        verbose_name_plural = 'posiciones'
+
+    def __str__(self):
+        return self.name
+
+
+class Department(models.Model):
+    name = models.CharField(verbose_name='nombre',
+                            max_length=30, null=False, blank=False)
+
+    class Meta:
+        verbose_name = 'departamento'
+        verbose_name_plural = 'departamento'
+
+    def __str__(self):
+        return self.name
+
+
 class Employee(models.Model):
     id_document = models.CharField(
         verbose_name='documento de identidad', max_length=30, null=False, blank=False, unique=True)
@@ -26,6 +50,11 @@ class Employee(models.Model):
         to=Sex, on_delete=models.CASCADE, verbose_name='sexo', related_name='employees')
     birth_date = models.DateField(
         verbose_name='fecha de nacimiento', null=False, blank=False)
+
+    department = models.ForeignKey(
+        to=Department, on_delete=models.CASCADE, verbose_name='departamento', related_name='employees')
+    position = models.ForeignKey(
+        to=Position, on_delete=models.CASCADE, verbose_name='posición', related_name='employees')
 
     monthly_salary = models.DecimalField(
         verbose_name='salario mensual', max_digits=14, decimal_places=4, null=False, blank=False)
