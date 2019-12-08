@@ -47,17 +47,19 @@ class Employee(models.Model):
     last_name = models.CharField(
         verbose_name='apellidos', max_length=60, null=False, blank=False)
     sex = models.ForeignKey(
-        to=Sex, on_delete=models.CASCADE, verbose_name='sexo', related_name='employees')
+        to=Sex, on_delete=models.CASCADE, verbose_name='sexo')
     birth_date = models.DateField(
         verbose_name='fecha de nacimiento', null=False, blank=False)
 
     department = models.ForeignKey(
-        to=Department, on_delete=models.CASCADE, verbose_name='departamento', related_name='employees')
+        to=Department, on_delete=models.CASCADE, verbose_name='departamento')
     position = models.ForeignKey(
-        to=Position, on_delete=models.CASCADE, verbose_name='posición', related_name='employees')
+        to=Position, on_delete=models.CASCADE, verbose_name='posición')
 
     monthly_salary = models.DecimalField(
         verbose_name='salario mensual', max_digits=14, decimal_places=4, null=False, blank=False)
+
+    active = models.BooleanField(verbose_name='activo', default=True)
 
     created_at = models.DateTimeField(
         verbose_name='fecha de creación', auto_now_add=True)
